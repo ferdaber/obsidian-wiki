@@ -1,5 +1,7 @@
 # Obsidian Wiki — Agent Context
 
+> **Fork:** this is `ferdaber/obsidian-wiki`, a fork of `Ar9av/obsidian-wiki`. Read `FORK.md` before changing anything or syncing upstream.
+
 A **skill-based framework** for building and maintaining an Obsidian knowledge base. No scripts or dependencies — everything is markdown instructions that you execute directly.
 
 ## README Translation Parity
