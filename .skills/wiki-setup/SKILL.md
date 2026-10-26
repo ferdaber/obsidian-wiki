@@ -34,7 +34,7 @@ If `.env` doesn't exist, create it from `.env.example`. Ask the user for:
 5. **Which timezone should the wiki's timestamps use?** → `timezone:` in `index.md` (not `.env`)
    - Optional. An IANA name such as `America/Detroit`; blank means UTC in the `Z` spelling.
    - Lives in the vault so it applies to every writer (CLI, server, Python API) and travels with it.
-   - Written by `obsidian-wiki setup --timezone <name>` (step 3 below) or by hand; `obsidian-wiki memory now` prints stamps in it.
+   - Written by `obsidian-wiki setup --project-only --no-hooks --timezone <name>` (step 3 below) or by hand; `obsidian-wiki memory now` prints stamps in it.
    - If using CLI mode, set `QMD_CLI_SEARCH_MODE=quality` by default; suggest `balanced` if reranking is too slow.
    - If unsure, skip for now — both skills fall back to `Grep` automatically.
    - Install instructions: see `.env.example` (QMD section).
@@ -125,7 +125,7 @@ mkdir -p "$OBSIDIAN_VAULT_PATH"/{concepts,entities,skills,references,synthesis,j
 
 ## Step 3: Create Special Files
 
-`obsidian-wiki setup --vault <path> [--timezone <IANA name>]` creates all of these in one go. The templates below are what it writes, for setups done by hand.
+`obsidian-wiki setup --vault <path> --project-only --no-hooks [--timezone <IANA name>]` creates all of these in one go. The templates below are what it writes, for setups done by hand.
 
 ### index.md
 
@@ -228,7 +228,7 @@ Create minimal Obsidian config for a good out-of-box experience:
 
 ### Folder colors and graph defaults
 
-`obsidian-wiki setup` also writes `.obsidian/snippets/obsidian-wiki-folders.css` (one color per category folder in the file explorer, `_` folders dimmed) and `.obsidian/graph.json` (the same colors in graph view, with `_raw/`, `_archives/`, `_staging/`, `_meta/`, `index`, `log`, and `hot` filtered out). If the CLI is available, run `obsidian-wiki setup --vault "$OBSIDIAN_VAULT_PATH"` rather than writing them by hand. Never overwrite an existing `.obsidian` file; to recolor later, use `graph-colorize`.
+`obsidian-wiki setup` also writes `.obsidian/snippets/obsidian-wiki-folders.css` (one color per category folder in the file explorer, `_` folders dimmed) and `.obsidian/graph.json` (the same colors in graph view, with `_raw/`, `_archives/`, `_staging/`, `_meta/`, `index`, `log`, and `hot` filtered out). If the CLI is available, run `obsidian-wiki setup --vault "$OBSIDIAN_VAULT_PATH" --project-only --no-hooks` rather than writing them by hand. Never overwrite an existing `.obsidian` file; to recolor later, use `graph-colorize`.
 
 ## Step 5: Recommend Obsidian Plugins
 
