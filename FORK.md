@@ -102,9 +102,13 @@ obsidian-wiki setup --vault ~/brain --project-only --no-hooks --timezone America
 git -C ~/brain init   # only if it is not already a repo
 ```
 
-5. Open a new Claude Code session. The recap appears.
+5. Open a new Claude Code session and ask Claude what vault memory the SessionStart hook gave it. It quotes a "Recent vault activity" section with an `INIT` line for `~/brain`. The recap goes into Claude's context, not your terminal, so nothing shows on screen.
 
-Per-prompt recall is on by default. Set `WIKI_PROMPT_RECALL=false` in the machine's environment to turn it off. If the recap is silent, set `WIKI_RECAP_DEBUG=1` to debug it.
+Per-prompt recall is on by default. Set `WIKI_PROMPT_RECALL=false` in the machine's environment to turn it off. If Claude has no recap, run the hook by hand from the same directory; it prints the recap or one line saying why it stayed silent:
+
+```bash
+echo '{}' | WIKI_RECAP_DEBUG=1 bash "$(ls -d ~/.claude/plugins/cache/obsidian-wiki/obsidian-wiki/*/ | tail -1).claude/hooks/wiki-session-recap.sh"
+```
 
 ## Update
 
